@@ -30,7 +30,6 @@ class EmergencyDutyController {
     return reTry(async () => {
       const weekdayNickname = await this.#inputView.readWeekdayNickname();
       this.#emergencyDutyService.setWeekdayNickname(weekdayNickname);
-      console.log(this.#emergencyDutyService.getWeekdayNickname());
       return this.#inputWeekendNickname();
     });
   }
@@ -38,8 +37,9 @@ class EmergencyDutyController {
   async #inputWeekendNickname() {
     return reTry(async () => {
       const weekendNickname = await this.#inputView.readWeekendNickname();
+      this.#emergencyDutyService.setWeekendNickname(weekendNickname);
+      console.log(this.#emergencyDutyService.getWeekendNickname());
       // 에러가 발생하면 weekday에서 다시 입력 받는다.
-      
     });
   }
 }
