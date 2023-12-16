@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  printString() {
-    Console.print();
+  printDutySchedule(dutySchedule) {
+    dutySchedule.forEach(schedule => Console.print(schedule));
   },
 };
 
