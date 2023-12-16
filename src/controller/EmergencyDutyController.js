@@ -50,7 +50,6 @@ class EmergencyDutyController {
 
   #printResult() {
     const dutySchedule = this.#emergencyDutyService.dutySchedule();
-    console.log(dutySchedule);
     this.#outputView.printDutySchedule(dutySchedule);
   }
 }
