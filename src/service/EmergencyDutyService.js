@@ -1,9 +1,19 @@
+import EmergencySchedule from '../domain/EmergencySchedule.js';
+
 class EmergencyDutyService {
-  // #inputs
+  #emergencySchedule;
 
   constructor() {}
 
-  // setInputs()
+  setEmergencySchedule(emergencySchedule) {
+    this.#emergencySchedule = new EmergencySchedule(
+      emergencySchedule,
+    ).getFormattedEmergencySchedule();
+  }
+
+  getEmergencySchedule() {
+    return this.#emergencySchedule;
+  }
 }
 
 export default EmergencyDutyService;

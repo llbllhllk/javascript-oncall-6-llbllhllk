@@ -20,8 +20,9 @@ class EmergencyDutyController {
   async #inputEmergencySchedule() {
     return reTry(async () => {
       const emergencySchedule = await this.#inputView.readEmergencySchedule();
-
-      return this.#inputWeekdayEmergencyNickname();
+      this.#emergencyDutyService.setEmergencySchedule(emergencySchedule);
+      console.log(this.#emergencyDutyService.getEmergencySchedule());
+      // return this.#inputWeekdayEmergencyNickname();
     });
   }
 
