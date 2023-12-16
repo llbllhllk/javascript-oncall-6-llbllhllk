@@ -1,3 +1,4 @@
+import { Console } from '@woowacourse/mission-utils';
 import reTry from '../utils/reTry.js';
 
 class EmergencyDutyController {
@@ -35,12 +36,20 @@ class EmergencyDutyController {
   }
 
   async #inputWeekendNickname() {
-    return reTry(async () => {
-      const weekendNickname = await this.#inputView.readWeekendNickname();
-      this.#emergencyDutyService.setWeekendNickname(weekendNickname);
-      console.log(this.#emergencyDutyService.getWeekendNickname());
-      // 에러가 발생하면 weekday에서 다시 입력 받는다.
-    });
+    while (true) {
+      try {
+        const weekendNickname = await this.#inputView.readWeekendNickname();
+        this.#emergencyDutyService.setWeekendNickname(weekendNickname);
+        return this.#printResult();
+      } catch ({ message }) {
+        Console.print(message);
+        return this.#inputWeekdayNickname();
+      }
+    }
+  }
+
+  #printResult() {
+    this.#emergencyDutyService.result();
   }
 }
 
