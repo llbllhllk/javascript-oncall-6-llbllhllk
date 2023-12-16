@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class WeekendNickname {
   #formattedWeekendNickname;
 
@@ -12,18 +15,19 @@ class WeekendNickname {
 
   #validate(weekendNickname) {
     weekendNickname.forEach(nickname => {
-      if (nickname.length > 5)
-        throw new Error('[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.');
+      if (nickname.length > CONSTANTS.weekendNickname.minLength) throw new Error(ERROR.string);
     });
-    if (weekendNickname.length < 5 || weekendNickname.length > 35)
-      throw new Error('[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.');
-    if (weekendNickname.length !== new Set(weekendNickname).size)
-      throw new Error('[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.');
+    if (
+      weekendNickname.length < CONSTANTS.weekendNickname.minLength ||
+      weekendNickname.length > CONSTANTS.weekendNickname.maxLength
+    )
+      throw new Error(ERROR.string);
+    if (weekendNickname.length !== new Set(weekendNickname).size) throw new Error(ERROR.string);
   }
 
   #formatWeekendNickname(weekendNickname) {
     return weekendNickname
-      .split(',')
+      .split(CONSTANTS.string.separtor)
       .map(element => element.trim())
       .filter(Boolean);
   }
