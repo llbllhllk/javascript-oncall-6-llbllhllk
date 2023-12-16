@@ -13,7 +13,16 @@ class EmergencyDutyController {
     this.#outputView = outputView;
   }
 
-  start() {}
+  start() {
+    return this.#inputEmergencySchedule();
+  }
+
+  async #inputEmergencySchedule() {
+    return reTry(async () => {
+      const emergencySchedule = await this.#inputView.readEmergencySchedule();
+      console.log(emergencySchedule);
+    });
+  }
 }
 
 export default EmergencyDutyController;
