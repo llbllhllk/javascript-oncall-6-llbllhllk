@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const OutputView = {
-  printString() {
-    Console.print();
+  printEmergencyDutyString(emergencyDuty) {
+    emergencyDuty.forEach(duty => Console.print(duty));
   },
 };
 

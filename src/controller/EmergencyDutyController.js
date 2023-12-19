@@ -45,7 +45,8 @@ class EmergencyDutyController {
   }
 
   #printResult() {
-    console.log(this.#emergencyDutyService.emergencyDuty());
+    const emergencyDuty = this.#emergencyDutyService.emergencyDuty();
+    this.#outputView.printEmergencyDutyString(emergencyDuty);
   }
 }
 
