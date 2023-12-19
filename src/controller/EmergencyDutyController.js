@@ -25,8 +25,17 @@ class EmergencyDutyController {
   }
 
   async #inputWeekdayNicknames() {
-    const weekdayNicknames = await this.#inputView.readWeekdayNicknames();
-    console.log(weekdayNicknames);
+    return reTry(async () => {
+      const weekdayNicknames = await this.#inputView.readWeekdayNicknames();
+      return this.#inputWeekendNicknames();
+    });
+  }
+
+  async #inputWeekendNicknames() {
+    return reTry(async () => {
+      const weekendNicknames = await this.#inputView.readWeekendNicknames();
+      
+    });
   }
 }
 
