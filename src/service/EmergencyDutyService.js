@@ -1,9 +1,13 @@
+import Schedule from '../domain/Schedule.js';
+
 class EmergencyDutyService {
-  // #inputs
+  #schedule;
 
   constructor() {}
 
-  // set()
+  setSchedule(schedule) {
+    this.#schedule = new Schedule(schedule).getFormattedSchedule();
+  }
 }
 
 export default EmergencyDutyService;
