@@ -42,7 +42,7 @@ class EmergencyDutyController {
   }
 
   #printResult() {
-    console.log('Hello World!');
+    this.#emergencyDutyService.emergencyDuty()
   }
 }
 
