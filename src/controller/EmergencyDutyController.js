@@ -37,7 +37,12 @@ class EmergencyDutyController {
     return reTry(async () => {
       const weekendNicknames = await this.#inputView.readWeekendNicknames();
       this.#emergencyDutyService.setWeekendNicknames(weekendNicknames);
-    });
+      return this.#printResult();
+    }, () => this.#inputWeekdayNicknames());
+  }
+
+  #printResult() {
+    console.log('Hello World!');
   }
 }
 
