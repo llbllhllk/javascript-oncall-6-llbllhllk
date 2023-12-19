@@ -20,7 +20,13 @@ class EmergencyDutyController {
   async #inputSchedule() {
     return reTry(async () => {
       const schedule = await this.#inputView.readSchedule();
+      return this.#inputWeekdayNicknames();
     });
+  }
+
+  async #inputWeekdayNicknames() {
+    const weekdayNicknames = await this.#inputView.readWeekdayNicknames();
+    console.log(weekdayNicknames);
   }
 }
 
