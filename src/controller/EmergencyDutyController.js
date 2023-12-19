@@ -14,7 +14,13 @@ class EmergencyDutyController {
   }
 
   start() {
-    console.log('Hello World!')
+    return this.#inputSchedule();
+  }
+
+  async #inputSchedule() {
+    return reTry(async () => {
+      const schedule = await this.#inputView.readSchedule();
+    });
   }
 }
 

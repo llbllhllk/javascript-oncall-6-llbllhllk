@@ -1,8 +1,8 @@
 import { Console } from '@woowacourse/mission-utils';
 
 const InputView = {
-  async read() {
-    return await Console.readLineAsync();
+  async readSchedule() {
+    return await Console.readLineAsync('비상 근무를 배정할 월과 시작 요일을 입력하세요> ');
   },
 };
 
