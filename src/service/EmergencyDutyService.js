@@ -1,4 +1,3 @@
-// import EmergencyDuty from '../domain/EmergencyDuty.js';
 import EmergencyDutyScheduler from '../domain/EmergencyDutyScheduler.js';
 import Nicknames from '../domain/Nicknames.js';
 import Schedule from '../domain/Schedule.js';
@@ -9,8 +8,6 @@ class EmergencyDutyService {
   #weekdayNicknames;
 
   #weekendNicknames;
-
-  constructor() {}
 
   setSchedule(schedule) {
     this.#schedule = new Schedule(schedule).getFormattedSchedule();

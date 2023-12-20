@@ -1,5 +1,13 @@
 const week = Object.freeze({
   list: ['일', '월', '화', '수', '목', '금', '토'],
+  sunday: 0,
+  monday: 1,
+  tuesday: 2,
+  wednesday: 3,
+  thursday: 4,
+  friday: 5,
+  saturday: 6,
+  length: 7,
 });
 
 const holidays = [

@@ -22,8 +22,8 @@ class EmergencyDutyScheduler {
   }
 
   emergencyDuty() {
-    const month = Number(this.#schedule[0]);
-    const week = this.#schedule[1];
+    const month = Number(this.#schedule[CONSTANTS.schedule.month]);
+    const week = this.#schedule[CONSTANTS.schedule.week];
     const startingDayIndex = DateHelper.getStartingDayIndex(week, CONSTANTS.week.list);
     const dayOfMonth = CONSTANTS.day[month];
     return this.#generateDutySchedule(month, startingDayIndex, dayOfMonth);
@@ -31,7 +31,7 @@ class EmergencyDutyScheduler {
 
   #generateDutySchedule(month, startingDayIndex, dayOfMonth) {
     return Array.from({ length: dayOfMonth }, (_, i) => {
-      const weekOfIndex = (i + startingDayIndex) % 7;
+      const weekOfIndex = (i + startingDayIndex) % CONSTANTS.week.length;
       const monthAndDay = DateHelper.getMonthAndDay(month, i + 1, CONSTANTS.week.list[weekOfIndex], DateHelper.isWeekdayHoliday(weekOfIndex, month, i + 1, CONSTANTS.holidays));
       const worker = this.#assignWorkerAndHandleNextDay(weekOfIndex, i, month, startingDayIndex);
       return `${monthAndDay} ${worker}`;
@@ -42,12 +42,12 @@ class EmergencyDutyScheduler {
     let worker = '';
     if (DateHelper.isWeekendOrHoliday(weekOfIndex, month, i + 1, CONSTANTS.holidays)) {
       worker = WorkerAssigner.assignWorker(this.#weekendNicknames, this.#weekendIndex, this.#weekdayIndex);
-      WorkerAssigner.handleNextDay(worker, this.#weekdayNicknames, this.#weekdayIndex, (i + 1 + startingDayIndex) % 7, WorkerAssigner.swapIfSameWorker);
+      WorkerAssigner.handleNextDay(worker, this.#weekdayNicknames, this.#weekdayIndex, (i + 1 + startingDayIndex) % CONSTANTS.week.length, WorkerAssigner.swapIfSameWorker);
       this.#weekendIndex += 1;
       return worker;
     }
     worker = WorkerAssigner.assignWorker(this.#weekdayNicknames, this.#weekdayIndex, this.#weekendIndex);
-    WorkerAssigner.handleNextDay(worker, this.#weekendNicknames, this.#weekendIndex, (i + 1 + startingDayIndex) % 7, WorkerAssigner.swapIfSameWorker);
+    WorkerAssigner.handleNextDay(worker, this.#weekendNicknames, this.#weekendIndex, (i + 1 + startingDayIndex) % CONSTANTS.week.length, WorkerAssigner.swapIfSameWorker);
     this.#weekdayIndex += 1;
     return worker;
   }

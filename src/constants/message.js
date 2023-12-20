@@ -4,6 +4,10 @@ const read = Object.freeze({
   weekendNicknames: '휴일 비상 근무 순번대로 사원 닉네임을 입력하세요> ',
 });
 
-const MESSAGE = Object.freeze({ read });
+const print = Object.freeze({
+  holiday: '(휴일)',
+});
+
+const MESSAGE = Object.freeze({ read, print });
 
 export default MESSAGE;
