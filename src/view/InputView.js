@@ -3,15 +3,18 @@ import MESSAGE from '../constants/message.js';
 
 const InputView = {
   async readSchedule() {
-    return await Console.readLineAsync(MESSAGE.read.schedule);
+    const schedule = await Console.readLineAsync(MESSAGE.read.schedule);
+    return schedule;
   },
 
   async readWeekdayNicknames() {
-    return await Console.readLineAsync(MESSAGE.read.weekdayNicknames);
+    const weekdayNicknames = await Console.readLineAsync(MESSAGE.read.weekdayNicknames);
+    return weekdayNicknames;
   },
 
   async readWeekendNicknames() {
-    return await Console.readLineAsync(MESSAGE.read.weekendNicknames);
+    const weekendNicknames = await Console.readLineAsync(MESSAGE.read.weekendNicknames);
+    return weekendNicknames;
   },
 };
 

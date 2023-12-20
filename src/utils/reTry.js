@@ -6,7 +6,7 @@ const reTry = async (callback, onError) => {
       return await callback();
     } catch ({ message }) {
       Console.print(message);
-      if (onError) return await onError();
+      onError && (await onError());
     }
   }
 };
