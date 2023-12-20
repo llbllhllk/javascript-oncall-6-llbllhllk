@@ -7,7 +7,7 @@ const InputView = {
   },
 
   async readWeekdayNicknames() {
-    return await Console.readLineAsync(MESSAGE.read.weekdayNickname);
+    return await Console.readLineAsync(MESSAGE.read.weekdayNicknames);
   },
 
   async readWeekendNicknames() {

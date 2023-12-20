@@ -14,8 +14,8 @@ class Schedule {
   }
 
   #validate(schedule) {
-    if (schedule[CONSTANTS.schedule.month] < CONSTANTS.month.january || schedule[CONSTANTS.schedule.month] > CONSTANTS.month.december) throw new Error(ERROR.schedule.week);
-    if (!CONSTANTS.week.list.includes(schedule[CONSTANTS.schedule.week])) throw new Error(ERROR.schedule.month);
+    if (schedule[CONSTANTS.schedule.month] < CONSTANTS.month.january || schedule[CONSTANTS.schedule.month] > CONSTANTS.month.december) throw new Error(ERROR.schedule.month);
+    if (!CONSTANTS.week.list.includes(schedule[CONSTANTS.schedule.week])) throw new Error(ERROR.schedule.week);
   }
 
   #formatSchedule(schedule) {
