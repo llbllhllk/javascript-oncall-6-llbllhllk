@@ -1,4 +1,5 @@
 import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
 
 class Schedule {
   #formattedSchedule;
@@ -13,15 +14,13 @@ class Schedule {
   }
 
   #validate(schedule) {
-    if (schedule[0] < 1 || schedule[0] > 12)
-      throw new Error('[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.');
-    if (!CONSTANTS.week.list.includes(schedule[1]))
-      throw new Error('[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.');
+    if (schedule[CONSTANTS.schedule.month] < CONSTANTS.month.january || schedule[CONSTANTS.schedule.month] > CONSTANTS.month.december) throw new Error(ERROR.schedule.week);
+    if (!CONSTANTS.week.list.includes(schedule[CONSTANTS.schedule.week])) throw new Error(ERROR.schedule.month);
   }
 
   #formatSchedule(schedule) {
     return schedule
-      .split(',')
+      .split(CONSTANTS.string.separator)
       .map(element => element.trim())
       .filter(Boolean);
   }

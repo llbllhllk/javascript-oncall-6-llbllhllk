@@ -28,10 +28,34 @@ const day = Object.freeze({
   12: 31,
 });
 
+const month = Object.freeze({
+  january: 1,
+  december: 12,
+});
+
+const schedule = Object.freeze({
+  month: 0,
+  week: 1,
+});
+
+const nicknames = Object.freeze({
+  maxLength: 5,
+  minCount: 5,
+  maxCount: 35,
+});
+
+const string = Object.freeze({
+  separator: ',',
+});
+
 const CONSTANTS = Object.freeze({
   week,
   holidays,
   day,
+  string,
+  nicknames,
+  schedule,
+  month,
 });
 
 export default CONSTANTS;

@@ -1,3 +1,6 @@
+import CONSTANTS from '../constants/constants.js';
+import ERROR from '../constants/error.js';
+
 class Nicknames {
   #formattedNicknames;
 
@@ -11,19 +14,16 @@ class Nicknames {
   }
 
   #validate(nicknames) {
-    if (nicknames.length !== new Set(nicknames).size)
-      throw new Error('[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.');
+    if (nicknames.length !== new Set(nicknames).size) throw new Error(ERROR.nicknames.duplicated);
     nicknames.forEach(nickname => {
-      if (nickname.length > 5)
-        throw new Error('[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.');
+      if (nickname.length > CONSTANTS.nicknames.maxLength) throw new Error(ERROR.nicknames.length);
     });
-    if (nicknames.length < 5 || nicknames.length > 35)
-      throw new Error('[ERROR] 유효하지 않은 입력 값입니다. 다시 입력해 주세요.');
+    if (nicknames.length < CONSTANTS.nicknames.minCount || nicknames.length > CONSTANTS.nicknames.maxCount) throw new Error(ERROR.nicknames.count);
   }
 
   #formatNicknames(nicknames) {
     return nicknames
-      .split(',')
+      .split(CONSTANTS.string.separator)
       .map(element => element.trim())
       .filter(Boolean);
   }

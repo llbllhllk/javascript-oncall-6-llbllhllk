@@ -38,13 +38,13 @@ class EmergencyDutyController {
       async () => {
         const weekendNicknames = await this.#inputView.readWeekendNicknames();
         this.#emergencyDutyService.setWeekendNicknames(weekendNicknames);
-        return this.#printResult();
+        return this.#printEmergencyDury();
       },
       () => this.#inputWeekdayNicknames(),
     );
   }
 
-  #printResult() {
+  #printEmergencyDury() {
     const emergencyDuty = this.#emergencyDutyService.emergencyDuty();
     this.#outputView.printEmergencyDutyString(emergencyDuty);
   }
